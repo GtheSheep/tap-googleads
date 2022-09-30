@@ -32,7 +32,7 @@ class AccessibleCustomers(GoogleAdsStream):
 
     path = "/customers:listAccessibleCustomers"
     name = "stream_accessible_customers"
-    primary_keys = ["resource_names"]
+    primary_keys = ["resourceNames"]
     replication_key = None
     # TODO add an assert for one record
     #    schema_filepath = SCHEMAS_DIR / "customer.json"
