@@ -84,7 +84,7 @@ class CustomerHierarchyStream(GoogleAdsStream):
 
     records_jsonpath = "$.results[*]"
     name = "stream_customer_hierarchy"
-    primary_keys = ["customer_client__id"]
+    primary_keys = ["id"]
     replication_key = None
     parent_stream_type = AccessibleCustomers
     schema = th.PropertiesList(
