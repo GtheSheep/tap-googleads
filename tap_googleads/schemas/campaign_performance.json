@@ -4,6 +4,18 @@
                 "customer_id": {
                     "type": "string"
                 },
+                    "campaign_name": {
+                      "type": "string"
+                    },
+                    "campaign_status": {
+                      "type": "string"
+                    },
+                    "segments_date": {
+                      "type": "string"
+                    },
+                    "segments_device": {
+                      "type": "string"
+                    },
                     "campaign": {
                         "type": "object",
                         "properties": {
