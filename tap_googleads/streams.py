@@ -84,10 +84,11 @@ class CustomerHierarchyStream(GoogleAdsStream):
 
     records_jsonpath = "$.results[*]"
     name = "stream_customer_hierarchy"
-    primary_keys = ["customerClient.id"]
+    primary_keys = ["id"]
     replication_key = None
     parent_stream_type = AccessibleCustomers
     schema = th.PropertiesList(
+	th.Property("id", th.StringType),
         th.Property(
             "customerClient",
             th.ObjectType(
@@ -102,6 +103,10 @@ class CustomerHierarchyStream(GoogleAdsStream):
             ),
         )
     ).to_dict()
+
+    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+	row["id"] = row["customerClient"]["id"]
+	return row
 
     # Goal of this stream is to send to children stream a dict of
     # login-customer-id:customer-id to query for all queries downstream
