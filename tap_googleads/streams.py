@@ -104,7 +104,7 @@ class CustomerHierarchyStream(GoogleAdsStream):
         )
     ).to_dict()
 
-    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
+    def post_process(self, row, context):
         row["id"] = row["customerClient"]["id"]
         return row
 
