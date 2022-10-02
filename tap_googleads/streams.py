@@ -105,8 +105,8 @@ class CustomerHierarchyStream(GoogleAdsStream):
     ).to_dict()
 
     def post_process(self, row: dict, context: dict | None = None) -> dict | None:
-	row["id"] = row["customerClient"]["id"]
-	return row
+        row["id"] = row["customerClient"]["id"]
+        return row
 
     # Goal of this stream is to send to children stream a dict of
     # login-customer-id:customer-id to query for all queries downstream
