@@ -262,21 +262,23 @@ class CampaignPerformance(ReportsStream):
     @property
     def gaql(self):
         return f"""
-    SELECT campaign.name, campaign.status, segments.device, segments.date, metrics.impressions, metrics.clicks, metrics.ctr, metrics.average_cpc, metrics.cost_micros FROM campaign WHERE segments.date >= {self.start_date} and segments.date <= {self.end_date}
+    SELECT campaign.id, campaign.name, campaign.status, segments.device, segments.date, metrics.impressions, metrics.clicks, metrics.ctr, metrics.average_cpc, metrics.cost_micros FROM campaign WHERE segments.date >= {self.start_date} and segments.date <= {self.end_date}
     """
 
     records_jsonpath = "$.results[*]"
     name = "stream_campaign_performance"
     primary_keys = [
-        "campaign_name",
+        "campaign_id",
         "campaign_status",
         "segments_date",
         "segments_device",
     ]
     replication_key = None
     schema_filepath = SCHEMAS_DIR / "campaign_performance.json"
+    state_partitioning_keys = ["campaign_id", "segments_date", "segments_device"]
 
     def post_process(self, row, context):
+        row["campaign_id"] = row["campaign"]["id"]
         row["campaign_name"] = row["campaign"]["name"]
         row["campaign_status"] = row["campaign"]["status"]
         row["segments_date"] = row["segments"]["date"]
