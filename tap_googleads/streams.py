@@ -267,10 +267,10 @@ class CampaignPerformance(ReportsStream):
 
     records_jsonpath = "$.results[*]"
     name = "stream_campaign_performance"
-    primary_keys = ["client_id", "campaign_id", "campaign_status", "segments_date", "segments_device"]
+    primary_keys = ["customer_id", "campaign_id", "campaign_status", "segments_date", "segments_device"]
     replication_key = None
     schema_filepath = SCHEMAS_DIR / "campaign_performance.json"
-    state_partitioning_keys = ["client_id", "campaign_id", "campaign_status", "segments_date", "segments_device"]
+    state_partitioning_keys = ["customer_id", "campaign_id", "campaign_status", "segments_date", "segments_device"]
 
     def post_process(self, row, context):
         row["customer_id"] = context["client_id"]
