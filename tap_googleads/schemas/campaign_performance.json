@@ -7,9 +7,6 @@
                     "campaign_id": {
                       "type": "string"
                     },
-                    "campaign_name": {
-                      "type": "string"
-                    },
                     "campaign_status": {
                       "type": "string"
                     },
