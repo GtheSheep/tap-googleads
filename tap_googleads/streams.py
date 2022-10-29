@@ -275,7 +275,7 @@ class CampaignPerformance(ReportsStream):
     ]
     replication_key = None
     schema_filepath = SCHEMAS_DIR / "campaign_performance.json"
-    state_partitioning_keys = ["campaign_id", "segments_date", "segments_device"]
+#     state_partitioning_keys = ["campaign_id", "segments_date", "segments_device"]
 
     def post_process(self, row, context):
         row["campaign_id"] = row["campaign"]["id"]
