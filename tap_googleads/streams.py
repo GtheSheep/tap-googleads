@@ -45,6 +45,10 @@ class AccessibleCustomers(GoogleAdsStream):
         """Return a context dictionary for child streams."""
         return {"resourceNames": ["customers/" + self.config.get("customer_id")]}
 
+    def post_process(self, row, context):
+        row["customer_id"] = self.config.get("customer_id")
+        return row
+
 
 class CustomerHierarchyStream(GoogleAdsStream):
     """
