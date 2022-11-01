@@ -32,11 +32,12 @@ class AccessibleCustomers(GoogleAdsStream):
 
     path = "/customers:listAccessibleCustomers"
     name = "stream_accessible_customers"
-    primary_keys = ["resourceNames"]
+    primary_keys = ["customer_id"]
     replication_key = None
     # TODO add an assert for one record
     #    schema_filepath = SCHEMAS_DIR / "customer.json"
     schema = th.PropertiesList(
+	th.Property("customer_id", th.StringType),
         th.Property("resourceNames", th.ArrayType(th.StringType))
     ).to_dict()
 
