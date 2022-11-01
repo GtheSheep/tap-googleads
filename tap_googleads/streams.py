@@ -92,6 +92,7 @@ class CustomerHierarchyStream(GoogleAdsStream):
     primary_keys = ["id"]
     replication_key = None
     parent_stream_type = AccessibleCustomers
+    state_partitioning_keys = ["id"]
     schema = th.PropertiesList(
 	th.Property("id", th.StringType),
         th.Property(
