@@ -195,10 +195,13 @@ class CampaignsStream(ReportsStream):
 
     records_jsonpath = "$.results[*]"
     name = "stream_campaign"
-    primary_keys = ["campaign__id"]
+    primary_keys = ["id"]
     replication_key = None
     schema_filepath = SCHEMAS_DIR / "campaign.json"
 
+    def post_process(self, row, context):
+        row["id"] = row["campaign"]["id"]
+        return row
 
 class AdGroupsStream(ReportsStream):
     """Define custom stream."""
