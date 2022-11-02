@@ -352,3 +352,23 @@ class CampaignPerformanceByLocation(ReportsStream):
     ]
     replication_key = None
     schema_filepath = SCHEMAS_DIR / "campaign_performance_by_location.json"
+
+
+class AdsStream(ReportsStream):
+    """Define custom stream."""
+
+    @property
+    def gaql(self):
+        return """
+            SELECT ad_group_ad.ad.id
+                 , ad_group_ad.ad.name
+            FROM ad_group_ad 
+            ORDER BY ad_group_ad.ad.id
+        """
+
+    records_jsonpath = "$.results[*]"
+    name = "ads"
+    primary_keys_jsonpaths = ["adGroupAd.ad.id"]
+    primary_keys = ["_sdc_primary_key"]
+    replication_key = None
+    schema_filepath = SCHEMAS_DIR / "ads.json"
