@@ -367,7 +367,7 @@ class AdsStream(ReportsStream):
         """
 
     records_jsonpath = "$.results[*]"
-    name = "ads"
+    name = "stream_ads"
     primary_keys_jsonpaths = ["adGroupAd.ad.id"]
     primary_keys = ["_sdc_primary_key"]
     replication_key = None
