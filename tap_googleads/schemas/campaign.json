@@ -3,7 +3,7 @@
     "properties": {
                 "id": {
                     "type": "string"
-                }
+                },
                 "customer_id": {
                     "type": "string"
                 },
