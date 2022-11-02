@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "_sdc_primary_key": {
+            "type": "string"
+        },
+        "adGroupAd": {
+            "type": "object",
+            "properties": {
+                "ad": {
+                  "type": "object",
+                  "properties": {
+                      "resourceName": {
+                          "type": "string"
+                      },
+                      "name": {
+                          "type": "string"
+                      },
+                      "id": {
+                          "type": "string"
+                      }
+                  }
+                }
+            }
+        }
+    }
+}
