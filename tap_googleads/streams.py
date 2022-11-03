@@ -207,6 +207,8 @@ class CampaignsStream(ReportsStream):
         return """
             SELECT campaign.id
                  , campaign.name
+		 , campaign.advertising_channel_type
+		 , campaign.advertising_channel_sub_type
             FROM campaign 
             ORDER BY campaign.id
         """
